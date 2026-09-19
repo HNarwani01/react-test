@@ -27,7 +27,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
   return <>
     <div className="flex w-full min-h-[100Dvh] items-center justify-center">
 
-      <div className="flex w-[402px] min-h-[433px] flex-col items-center justify-center gap-[16px] leading-[18px] p-[16px] border-[1px] border-solid border-[#FCFEFD] rounded-[24px] bg-[#FCFEFD]">
+      <div className="flex w-[402px] min-h-[433px] flex-col items-center justify-center gap-[16px] leading-[18px] p-[16px] border-[1px] border-solid border-[#D3D8D8] rounded-[24px] bg-[#FCFEFD]">
 
         <Headings>Publicly reply to comments</Headings>
         {/*  */}
@@ -71,19 +71,35 @@ export default function Home({ loaderData }: Route.ComponentProps) {
           <Slider options={limits} value={limit} onChange={setLimit} />
 
           <div className="flex w-full h-[38px] py-[8px] px-[12px] flex-row items-center gap-[10px] border-x-[1px] border-b-[1px] border-t-0 border-dashed border-[#E4D3F8] rounded-[14px]">
-            <div className="flex w-[16px] h-[16px] rounded-full bg-[linear-gradient(66deg,#F73398_0%,#F5CDE2_45%,#CD8BFB_56%,#6A07E4_100%)]">
+            {/* <div className="flex w-[16px] h-[16px] rounded-full bg-[linear-gradient(66deg,#F73398_0%,#F5CDE2_45%,#CD8BFB_56%,#6A07E4_100%)]">
             
-            </div>
+            </div> */}
+           <svg width="16" height="16" viewBox="4.27179 1.14249 10.28321 10.28321" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sparkleGradient" x1="3.212" y1="9.045" x2="15.614" y2="3.523" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F73398"/>
+      <stop offset="45%" stop-color="#F5CDE2"/>
+      <stop offset="56%" stop-color="#CD8BFB"/>
+      <stop offset="100%" stop-color="#6A07E4"/>
+    </linearGradient>
+  </defs>
+  <path d="M9.41339 1.14249C12.2528 1.1427 14.555 3.44463 14.555 6.28409C14.5549 9.12347 12.2527 11.4255 9.41339 11.4257C6.57385 11.4257 4.27188 9.1236 4.27179 6.28409C4.27179 3.4445 6.5738 1.14249 9.41339 1.14249ZM9.62335 4.11417C9.52509 3.95975 9.29876 3.95975 9.2005 4.11417L8.91632 4.56143C8.60207 5.05509 8.1834 5.47372 7.68976 5.78799L7.24249 6.07315C7.08835 6.1715 7.08817 6.39682 7.24249 6.49503L7.68976 6.77921C8.18358 7.09356 8.60202 7.51288 8.91632 8.00674L9.2005 8.45303C9.29876 8.60746 9.52509 8.60746 9.62335 8.45303L9.90753 8.00674C10.2218 7.51289 10.6403 7.09356 11.1341 6.77921L11.5814 6.49503C11.7357 6.39682 11.7355 6.17149 11.5814 6.07315L11.1341 5.78799C10.6405 5.47372 10.2218 5.05509 9.90753 4.56143L9.62335 4.11417Z" fill="url(#sparkleGradient)"/>
+</svg>
             <div className="flex flex-row items-center gap-[6px] justify-between w-[265px]">
               <p className="text-[14px] font-semibold text-transparent bg-clip-text bg-[linear-gradient(90deg,#F73398_0%,#CD46D4_100%)]">Generate 3 Public Replies</p>
               <div style={{borderRadius:"4px"}} className="w-[13px] h-[13px] bg-[#DCCAFF] text-[#A77BFF] flex items-center justify-center text-[10px] font-semibold">
                 i
               </div>
             </div>
-            <div className="ml-auto px-[8px] rounded-full text-white text-[12px] font-semibold bg-[linear-gradient(90deg,#F73398_0%,#CD8BFB_100%)]">
+            <div className="ml-auto px-[8px] rounded-full text-white text-[12px] font-semibold bg-[linear-gradient(90deg,#F73398_0%,#CD8BFB_100%)] flex items-center gap-[8px] justify-center">
+              <svg width="10.28321" height="10.28321" viewBox="4.27179 1.14249 10.28321 10.28321" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M9.41339 1.14249C12.2528 1.1427 14.555 3.44463 14.555 6.28409C14.5549 9.12347 12.2527 11.4255 9.41339 11.4257C6.57385 11.4257 4.27188 9.1236 4.27179 6.28409C4.27179 3.4445 6.5738 1.14249 9.41339 1.14249ZM9.62335 4.11417C9.52509 3.95975 9.29876 3.95975 9.2005 4.11417L8.91632 4.56143C8.60207 5.05509 8.1834 5.47372 7.68976 5.78799L7.24249 6.07315C7.08835 6.1715 7.08817 6.39682 7.24249 6.49503L7.68976 6.77921C8.18358 7.09356 8.60202 7.51288 8.91632 8.00674L9.2005 8.45303C9.29876 8.60746 9.52509 8.60746 9.62335 8.45303L9.90753 8.00674C10.2218 7.51289 10.6403 7.09356 11.1341 6.77921L11.5814 6.49503C11.7357 6.39682 11.7355 6.17149 11.5814 6.07315L11.1341 5.78799C10.6405 5.47372 10.2218 5.05509 9.90753 4.56143L9.62335 4.11417Z" fill="#FFFFFF"/>
+</svg>
               
-              
-              250</div>
+              <p className="text-[11.5px] font-semibold">
+                250  
+              </p>
+              </div>
           </div>
 
 
@@ -94,4 +110,5 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 
   </>;
 }
+
 
