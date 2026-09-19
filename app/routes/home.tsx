@@ -1,7 +1,9 @@
 
+import { useState } from "react";
 import type { Route } from "./+types/home";
 import { Welcome } from "../welcome/welcome";
 import { Headings, Paragraph } from "../Components/UI";
+import Slider from "../Components/section/Slider/Slider";
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -11,9 +13,19 @@ export function meta({ }: Route.MetaArgs) {
 }
 
 
+const limits = [50, 200, 400, 800];
+
+const growTextarea = (e: React.SyntheticEvent<HTMLTextAreaElement>) => {
+  const box = e.currentTarget;
+  box.style.height = "auto";
+  box.style.height = Math.min(box.scrollHeight, 300) + "px";
+};
+
 export default function Home({ loaderData }: Route.ComponentProps) {
+  const [limit, setLimit] = useState(400);
+
   return <>
-    <div className="flex w-full h-[100Dvh] items-center justify-center">
+    <div className="flex w-full min-h-[100Dvh] items-center justify-center">
 
       <div className="flex w-[402px] min-h-[433px] flex-col items-center justify-center gap-[16px] leading-[18px] p-[16px] border-[1px] border-solid border-[#FCFEFD] rounded-[24px] bg-[#FCFEFD]">
 
@@ -25,7 +37,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
             <Paragraph>A variant will be selected at random to avoid repetition.</Paragraph>
           </div>
           <div className="flex flex-col gap-[14px] w-full min-h-[132px] h-[auto] border-[1.13px] border-solid border-[#D3D8D8] rounded-[22px] p-[14px]">
-            <textarea className="w-full h-[100%] resize-none border-none outline-none rounded-[22px] p-[12px] text-[14px] text-[#1E2943]" placeholder="Write a comment..." defaultValue="If you’re still curious, don’t forget to tap the link"></textarea>
+            <textarea className="no-Scrollbar w-full h-[100%] resize-none border-none outline-none rounded-[22px] p-[12px] text-[14px] text-[#1E2943]" placeholder="Write a comment..." defaultValue="" onInput={growTextarea}></textarea>
             <div className="flex w-full h-[40.57px] p-[14px 0px]">
               <div className="flex w-[342px] h-full items-center m-auto border-[1.13px] border-solid border-[#D3D8D8] rounded-[14px] px-[14px] py-[9px] gap-[17px] cursor-pointer">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,24 +61,29 @@ export default function Home({ loaderData }: Route.ComponentProps) {
           </div>
         </div>
         {/*  */}
-        <div className="w-full border-[0.68px] border-[#CCCCCC]"></div>
+        <div className="w-full h-[0.68px] bg-[#CCCCCC]"></div>
         {/*  */}
         <div className="flex w-full flex-col gap-[12px] h-[154px] ">
           <div className="flex flex-col h-[54px] w-full ">
             <Headings type="h2" color="secondary">Limit public replies</Headings>
             <Paragraph>Some comments are skipped automatically to avoid spam detection</Paragraph>
           </div>
-          <div className="flex w-full h-[40px] items-center justify-between p-[3px] border-[1.13px] border-solid border-[#D3D8D8] bg-[#F1F3F3] rounded-[14px]">
-            <div className="flex flex-1 h-full items-center justify-center rounded-[11px] cursor-pointer text-[#8C919F] text-[16px] font-medium">50</div>
-            <div className="flex flex-1 h-full items-center justify-center rounded-[11px] cursor-pointer text-[#8C919F] text-[16px] font-medium">200</div>
-            <div className="flex flex-1 h-full items-center justify-center rounded-[11px] cursor-pointer bg-white text-black text-[16px] font-medium">400</div>
-            <div className="flex flex-1 h-full items-center justify-center rounded-[11px] cursor-pointer text-[#8C919F] text-[16px] font-medium">800</div>
-          </div>
+          <Slider options={limits} value={limit} onChange={setLimit} />
 
-          <div className="flex w-full h-[38px] py-[8px] px-[12px] flex-row items-center gap-[10px] border-[1px] border-dashed border-[#E4D3F8] rounded-[14px]">
-            <div className="w-[16px] h-[16px] bg-[linear-gradient(135deg,#F73398_0%,#F5CDE2_34%,#CD8BFB_69%,#6A07E4_100%)]  overflow-hidden rounded-full"></div>
-            <p className="text-[14px] font-semibold text-transparent bg-clip-text bg-[linear-gradient(90deg,#F73398_0%,#CD46D4_100%)]">Generate 3 Public Replies</p>
-            <div className="ml-auto px-[8px] rounded-full text-white text-[12px] font-semibold bg-[linear-gradient(90deg,#F73398_0%,#CD8BFB_100%)]">250</div>
+          <div className="flex w-full h-[38px] py-[8px] px-[12px] flex-row items-center gap-[10px] border-x-[1px] border-b-[1px] border-t-0 border-dashed border-[#E4D3F8] rounded-[14px]">
+            <div className="flex w-[16px] h-[16px] rounded-full bg-[linear-gradient(66deg,#F73398_0%,#F5CDE2_45%,#CD8BFB_56%,#6A07E4_100%)]">
+            
+            </div>
+            <div className="flex flex-row items-center gap-[6px] justify-between w-[265px]">
+              <p className="text-[14px] font-semibold text-transparent bg-clip-text bg-[linear-gradient(90deg,#F73398_0%,#CD46D4_100%)]">Generate 3 Public Replies</p>
+              <div style={{borderRadius:"4px"}} className="w-[13px] h-[13px] bg-[#DCCAFF] text-[#A77BFF] flex items-center justify-center text-[10px] font-semibold">
+                i
+              </div>
+            </div>
+            <div className="ml-auto px-[8px] rounded-full text-white text-[12px] font-semibold bg-[linear-gradient(90deg,#F73398_0%,#CD8BFB_100%)]">
+              
+              
+              250</div>
           </div>
 
 
@@ -77,3 +94,4 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 
   </>;
 }
+
