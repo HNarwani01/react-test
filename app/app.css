@@ -13,3 +13,12 @@ body {
     color-scheme: dark;
   }
 }
+::root{
+  --primary-color: #1E2943;
+  --secondary-color: #071329;
+  --light-color: #FCFEFD;
+  --gradient-color: linear-gradient(135deg,#F73398_0%,#F5CDE2_34%,#CD8BFB_69%,#6A07E4_100%);
+}
+.no-Scrollbar::-webkit-scrollbar {
+  display: none;
+}
